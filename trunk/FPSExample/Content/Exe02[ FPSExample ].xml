@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FPSExample>
+	<player positionX="0.0" positionY="0.0" positionZ="0.0" 
+			width="50.0" height="120.0"
+			step_height="70.0" 
+			head_height="120.0"
+			up_and_rotation="0.0"
+			gravity="2000.0"
+			jump_height="150.0" />
+
+	<guns>
+		<gun name="_Beretta_Gun" bullets="10" bulletLifeTime="3000" guntype="Pistol" 
+			 isRotatable="true" angleOffset="0.005" 
+			 spriteAssetName="Content\\Gun_Sprite" bulletAssetName="Content\\bullet"/>
+	</guns>
+
+	<enemies>
+		<enemy name="_Dwarf_Enemy" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="20.0" 
+			   runSpeed="7.0" walkSpeed="4.5" 
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>
+		
+		<enemy name="_Dwarf_Enemy01" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="20.0"
+			   runSpeed="7.0" walkSpeed="4.5"
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>		
+	</enemies>
+	
+</FPSExample>

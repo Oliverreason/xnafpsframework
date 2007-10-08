@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FPSExample>
+	<player positionX="100.0" positionY="10.0" positionZ="0.0" 
+			width="40.0" height="80.0"
+			step_height="30.0" 
+			head_height="70.0"
+			up_and_rotation="0.0"
+			gravity="980.0"
+			jump_height="60.0" />
+	<gun>
+		<element name="_Box05__Gun" guntype="MachineGun" bullets="20"/>
+	</gun>
+
+	<ammopack>
+		<element name="_Box02__AmmoPack" guntype="MachineGun" quantity="100"/> 
+	</ammopack>
+
+	<medpack>
+		<element name="_Box04__MedPack" quantity="50"/>
+	</medpack>
+</FPSExample>

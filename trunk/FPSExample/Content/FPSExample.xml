@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FPSExample>
+	<player positionX="0.0" positionY="0.0" positionZ="0.0" 
+			width="50.0" height="120.0"
+			step_height="70.0" 
+			head_height="120.0"
+			up_and_rotation="0.0"
+			gravity="2000.0"
+			jump_height="150.0" />
+	
+	<medpacks>
+		<medpack name="_MedPack01_InitialRoom" quantity="10"/>
+		<medpack name="_MedPack02_InitialRoom" quantity="10"/>
+		<medpack name="_MedPack02_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack03_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack04_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack05_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack06_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack07_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack08_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack09_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack10_SmallSaloon" quantity="5" />
+		<medpack name="_MedPack11_SmallSaloon" quantity="5" />
+	</medpacks>
+	
+	<guns>
+		<gun name="_Beretta_Gun" bullets="100" bulletLifeTime="3000" guntype="Pistol" 
+			 isRotatable="true" angleOffset="0.005" 
+			 spriteAssetName="Content\\Gun_Sprite" bulletAssetName="Content\\bullet"/>
+	</guns>
+
+	<enemies>
+		<enemy name="_Dwarf01_BigSaloon" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0" 
+			   runSpeed="7.0" walkSpeed="4.5" 
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>
+		
+		<enemy name="_Dwarf02_BigSaloon" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0"
+			   runSpeed="7.0" walkSpeed="4.5"
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>		
+			   
+		<enemy name="_Dwarf01_FinalRoom" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0" 
+			   runSpeed="7.0" walkSpeed="4.5" 
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>
+		
+		<enemy name="_Dwarf01_MediumRoom" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0"
+			   runSpeed="7.0" walkSpeed="4.5"
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>		
+			   
+		<enemy name="_Dwarf02_MediumRoom" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0" 
+			   runSpeed="7.0" walkSpeed="4.5" 
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>
+		
+		<enemy name="_Dwarf01_InitialRoom" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0"
+			   runSpeed="7.0" walkSpeed="4.5"
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>		
+			   
+		<enemy name="_Dwarf02_InitialRoom" health="100" assetName="Content\\Dwarf\\dwarfmodel" scaleFactor="16.0" 
+			   runSpeed="7.0" walkSpeed="4.5" 
+			   idleState="idle0" walkState="walk"  runState="run" attackState="walk" dieState="stayCrouched"/>
+	</enemies>	
+</FPSExample>
