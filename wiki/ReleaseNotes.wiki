@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= Release Notes - Introdução =
+
+Aqui, relatamos as notas de cada versão lançada do projeto
+
+= XNA FPS FW =
+
+== 0.0.0 ==
+
+Sem notas ainda.
+
