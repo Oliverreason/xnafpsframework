@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FPSExample>
+	<Camera>
+		<width>40.0</width>
+		<height>80.0</height>
+		<step_height>30.0</step_height>
+		<head_height>70.0</head_height>
+		<up_and_rotation>0.0</up_and_rotation>
+		<gravity>980.0</gravity>
+		<jump_height>60.0</jump_height>
+	</Camera>
+	
+	<Player>
+		<position>
+			<X>100.</X>
+			<Y>10.0</Y>
+			<Z>0.0</Z>
+		</position>
+		<health>100</health>
+		<lives>3</lives>
+	</Player>
+
+	<availableGuns>
+		<Gun>
+			<name>Box05__Gun</name>
+			<GunType>MachineGun</GunType>
+			<bullets>20</bullets>
+		</Gun>
+	</availableGuns>
+
+	<availableAmmoPacks>
+		<AmmoPack>
+			<name>Box02__AmmoPack</name>
+			<guntype>MachineGun</guntype>
+			<quantity>100</quantity>
+		</AmmoPack>
+	</availableAmmoPacks>
+
+	<availableMedPacks>
+		<MedPack>
+			<name>Box04__MedPack</name>
+			<quantity>50</quantity>
+		</MedPack>
+	</availableMedPacks>
+
+	<availableEnimies>
+		   
+	</availableEnimies>
+</FPSExample>
