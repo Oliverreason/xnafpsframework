@@ -1,6 +1,4 @@
-#summary One-sentence summary of this page.
-
-= Release Notes - Introdução =
+= Release Notes =
 
 Aqui, relatamos as notas de cada versão lançada do projeto
 
@@ -9,4 +7,3 @@ Aqui, relatamos as notas de cada versão lançada do projeto
 == 0.0.0 ==
 
 Sem notas ainda.
-
