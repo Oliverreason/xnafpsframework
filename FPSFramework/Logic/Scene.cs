@@ -206,21 +206,44 @@ namespace FPSFramework.Logic
             GamePadState gps = GamePad.GetState(PlayerIndex.One);
             KeyboardState kbs = Keyboard.GetState();
 
+            //movement inputs already handled by BoxCollider. Here we are handling
+            //this framework particular inputs.
             if (gps.Buttons.Y == ButtonState.Pressed || kbs.IsKeyDown(Keys.Enter))
             {
                 if (this.player.ActualGun != null)
                 {
-                    Bullet b = this.player.ActualGun.Shot();
-                    this.bullets.Add(b);
+                    Bullet b = this.player.ActualGun.Shoot();
+                    if (b != null)
+                    {
+                        this.bullets.Add(b);
+                    }
                 }
             }
 
             this.CheckCollisions(gameTime);
-            
-            foreach (Enemy e in this.enemies.Values)
+
+            //uffbruno: updates living enemies and saves keys of dead enemies for posterior removal
+            List<String> deadEnemyKeys = new List<String>();
+
+            foreach (KeyValuePair<String, Enemy> e in this.enemies)
             {
-                e.Update(gameTime, this.camera.world.Translation, ref this.camera.view, 
-                            ref this.camera.projection, ref this.collisionMesh);               
+                //uffbruno: if enemy is in a dead state, it must be removed.
+                if (e.Value.ActualAnimationState == GameEntityAnimationState.Die)
+                {
+                    deadEnemyKeys.Add(e.Key);
+                }
+                else
+                {
+
+                    e.Value.Update(gameTime, this.camera.world.Translation, ref this.camera.view,
+                                ref this.camera.projection, ref this.collisionMesh);
+                }
+            }
+
+            //uffbruno: removing dead enemies
+            foreach (String key in deadEnemyKeys)
+            {
+                this.enemies.Remove(key);
             }
 
             ///Manages bullets
@@ -367,6 +390,15 @@ namespace FPSFramework.Logic
             ///Bullets with enemies, static objects...
             foreach (Bullet b in this.bullets)
             {
+                //uffbruno
+                CollisionBox bulletCollisionBox = new CollisionBox(b.Box);
+                foreach (Enemy e in this.enemies.Values)
+                {
+                    //if (bulletCollisionBox.BoxIntersect(e.Box))
+                    //{
+                        this.SendMessage(b, e, GameEntityMessageType.Damage, gameTime);
+                    //};
+                }
                 //b.Update(gameTime, ref this.collisionMesh, ref this.enemies);
             }
         }
