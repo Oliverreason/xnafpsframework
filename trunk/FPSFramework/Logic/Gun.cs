@@ -214,7 +214,7 @@ namespace FPSFramework.Logic
         /// Emulates a bullet factory
         /// </summary>
         /// <returns>A Bullet</returns>
-        public virtual Bullet Shot()
+        public virtual Bullet Shoot()
         {
             if (this.numberOfBullets > 0)
             {

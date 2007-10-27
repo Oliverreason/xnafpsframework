@@ -74,14 +74,16 @@ namespace FPSFramework.Logic
         {
             if (b != null)
             {
-                this.lifeTime = b.LifeTime;
+                this.lifeTime = b.lifeTime;
                 this.ModelMesh = b.ModelMesh;
             }
         }
 #endregion
 
+
         public override void Draw(GameTime gameTime)
         {
+            //SceneComponent.Batch.Draw(
             base.Draw(gameTime);
         }
 
@@ -89,6 +91,10 @@ namespace FPSFramework.Logic
         {
             this.elapsedTime += gameTime.ElapsedGameTime.Milliseconds;
             this.dead = (this.elapsedTime >= this.lifeTime);
+
+            Vector3 pos = this.Position;
+            pos.Z += 1.0f;
+            this.Position = pos;
 
             this.Matrix = Matrix.CreateTranslation(this.Position);
             /*
