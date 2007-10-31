@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 //We
 using FPSFramework;
 using FPSFramework.Core;
+//3rd Part
+using BoxCollider;
 #endregion
 
 namespace FPSFramework.Logic
@@ -158,7 +160,7 @@ namespace FPSFramework.Logic
                           Matrix.CreateTranslation(vec);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, CollisionMesh collision_mesh)
         {
             if (this.isCatched == false)
             {
@@ -187,7 +189,7 @@ namespace FPSFramework.Logic
                  */
             }
 
-            base.Update(gameTime);
+            base.Update(gameTime, collision_mesh);
         }
 
         public override void Draw(GameTime gameTime)
@@ -214,7 +216,7 @@ namespace FPSFramework.Logic
         /// Emulates a bullet factory
         /// </summary>
         /// <returns>A Bullet</returns>
-        public virtual Bullet Shoot()
+        public virtual Bullet Shot()
         {
             if (this.numberOfBullets > 0)
             {

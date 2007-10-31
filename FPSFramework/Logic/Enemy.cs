@@ -161,10 +161,6 @@ namespace FPSFramework.Logic
         public virtual void Update(GameTime gameTime, Vector3 cameraPos, ref Matrix view, 
                                     ref Matrix projection, ref CollisionMesh collision)
         {
-            if (this.Health <= 0)
-            {
-                this.ActualAnimationState = GameEntityAnimationState.Die;
-            }
             //see every state
             if (this.actualState != null)
             {
@@ -173,7 +169,9 @@ namespace FPSFramework.Logic
                     ((FollowState)this.actualState).Update(gameTime, this, cameraPos, ref view, ref projection, ref collision);
                 }
                 else
+                {
                     this.actualState.Update(gameTime, this);
+                }
             }
 
             this.Matrix = Matrix.CreateScale(this.scaleFactor) * 
@@ -250,15 +248,7 @@ namespace FPSFramework.Logic
 
             case GameEntityMessageType.Damage:
                 {
-                    //uffbruno
-                    this.Health -= 100; //just for testing...
-                    
-                    //uffbruno: a more generic way to do this is as follows
-                    /*if (message.sender is Bullet)
-                    {
-                        this.Health -= ((Bullet)message.sender).DamageAmount;
-                    }
-                    */
+
                     break;
                 }
             }

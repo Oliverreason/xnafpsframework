@@ -133,13 +133,13 @@ namespace FPSFramework.Logic
             }
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, CollisionMesh collision_mesh)
         {
             this.Position = this.camera.transform.Translation;
 
             if (this.actualGun != null)
             {
-                this.ActualGun.Update(gameTime);
+                this.ActualGun.Update(gameTime, collision_mesh);
             }
         }
 
