@@ -84,6 +84,7 @@ namespace BoxCollider
         {
             // make sure matrix Y axis is (0,1,0)
             transform = m;
+
             if (transform.M22 < 0.9999f)
             {
                 // rotate Y to (0,1,0)
@@ -95,6 +96,7 @@ namespace BoxCollider
                 transform = transform * Matrix.CreateFromAxisAngle(axis, ang);
                 transform.Translation = pos;
             }
+
             up_down_rot = 0.0f;
             world = transform;
             view = Matrix.Invert(world);

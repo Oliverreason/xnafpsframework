@@ -336,6 +336,7 @@ namespace BoxCollider
 		public void Draw(GraphicsDevice gd)
 		{
 			Vector3[] edges = GetEdges();
+
 			if (vb == null)
 			{
 				vb = new VertexBuffer(gd, VertexPositionColor.SizeInBytes * 24, ResourceUsage.WriteOnly);
@@ -343,6 +344,7 @@ namespace BoxCollider
 			}
 
 			VertexPositionColor[] v = new VertexPositionColor[24];
+
 			for (int i = 0; i < 24; i += 2)
 			{
 				v[i].Position = edges[i];
@@ -350,6 +352,7 @@ namespace BoxCollider
 				v[i + 1].Position = edges[i + 1];
 				v[i + 1].Color = Color.Red;
 			}
+
 			vb.SetData<VertexPositionColor>(v);
 
 			gd.RenderState.DepthBias = -0.1f;
@@ -358,6 +361,7 @@ namespace BoxCollider
 			gd.Vertices[0].SetSource(vb, 0, VertexPositionColor.SizeInBytes);
 
 			gd.RenderState.DepthBias = 0.0f;
+            gd.DrawPrimitives(PrimitiveType.LineList, 0, VertexPositionColor.SizeInBytes);
 		}
 	}
 }

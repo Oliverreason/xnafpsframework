@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 //We
 using FPSFramework;
 using FPSFramework.Core;
+//3rd Part
+using BoxCollider;
 #endregion
 
 namespace FPSFramework.Logic
@@ -74,27 +76,21 @@ namespace FPSFramework.Logic
         {
             if (b != null)
             {
-                this.lifeTime = b.lifeTime;
+                this.lifeTime = b.LifeTime;
                 this.ModelMesh = b.ModelMesh;
             }
         }
 #endregion
 
-
         public override void Draw(GameTime gameTime)
         {
-            //SceneComponent.Batch.Draw(
             base.Draw(gameTime);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, CollisionMesh collision_mesh)
         {
             this.elapsedTime += gameTime.ElapsedGameTime.Milliseconds;
             this.dead = (this.elapsedTime >= this.lifeTime);
-
-            Vector3 pos = this.Position;
-            pos.Z += 1.0f;
-            this.Position = pos;
 
             this.Matrix = Matrix.CreateTranslation(this.Position);
             /*
@@ -103,7 +99,8 @@ namespace FPSFramework.Logic
             pos.X += 1.0f;
             pos.Z += 1.0f;
             */
-            base.Update(gameTime);
+            base.Update(gameTime, collision_mesh);
         }
+
     }
 }

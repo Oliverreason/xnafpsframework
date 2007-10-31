@@ -39,7 +39,7 @@ namespace FPSExample
         {
             graphics = new GraphicsDeviceManager(this);
             content = new ContentManager(Services);
-            debugString = "XNA FPS Framework v. 0.2.1";            
+            debugString = "XNA FPS Framework v. 0.2.8";            
         }
 
 
@@ -73,17 +73,18 @@ namespace FPSExample
                 this.graphics.GraphicsDevice.RenderState.AlphaTestEnable = false;
                 this.graphics.GraphicsDevice.RenderState.CullMode = CullMode.CullCounterClockwiseFace;
 
-                Model scene = content.Load<Model>(@"Content\cena_teste02");
+                Model scene = content.Load<Model>(@"Content\TestDynObj"); //TestDynObj | cena_teste02
 
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(@"Content\FPSExample.xml");
+                xmlDoc.Load(@"Content\TesteDynamicObject.xml"); //TesteDynamicObject.xml | FPSExample.xml
 
                 //saida de texto
-                this.debugFont = content.Load<SpriteFont>("DebugFont");
-                this.sb = new SpriteBatch(graphics.GraphicsDevice);
+                this.debugFont = this.content.Load<SpriteFont>("DebugFont");
+                this.sb = new SpriteBatch(this.graphics.GraphicsDevice);
 
                 //FPS Framework
-                FPSFramework.Core.SystemResources.Register(ref this.content);
+                GraphicsDevice gd = this.graphics.GraphicsDevice;
+                FPSFramework.Core.SystemResources.Register(ref gd, ref this.sb, ref this.content);
 
                 this.cenario = new SceneComponent(this, scene, xmlDoc);
             }
