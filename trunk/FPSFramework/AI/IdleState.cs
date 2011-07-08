@@ -22,8 +22,8 @@ namespace FPSFramework.AI
 
         public void Update(GameTime gameTime, Enemy e)
         {
-            e.ModelAnimator.World = Matrix.CreateScale(e.ScaleFactor) *
-                                       Matrix.CreateTranslation(e.Position);      
+            //e.ModelAnimator.World = Matrix.CreateScale(e.ScaleFactor) *
+            //                           Matrix.CreateTranslation(e.Position);      
         }
 
         public void Exit()
