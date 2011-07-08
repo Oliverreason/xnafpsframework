@@ -1,11 +1,1 @@
 #labels Featured
-= Change Log =
-
-Lista das mudanças ocorridas em cada versão em relação as anteriores
-
-
-== XNA FPS FW ==
-
-=== 0.0.0 ===
-
-Sem notas ainda...
