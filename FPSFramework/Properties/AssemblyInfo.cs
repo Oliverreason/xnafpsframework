@@ -5,21 +5,24 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XNA FPS Framework")]
+[assembly: AssemblyTitle("FPSFramework")]
 [assembly: AssemblyProduct("FPSFramework")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("MonthewZooma-MathowZeh Co.")]
-[assembly: AssemblyCopyright("Copyright © 2007 Rabello & Mattos")]
+[assembly: AssemblyCompany("Duli Mar Ltda")]
+[assembly: AssemblyCopyright("Copyright © Duli Mar Ltda 2006")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
+// COM, set the ComVisible attribute to true on that type. Only Windows
+// assemblies support COM.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("21b37bd1-f446-4229-8302-8e2ab96a2d58")]
+// On Windows, the following GUID is for the ID of the typelib if this
+// project is exposed to COM. On other platforms, it unique identifies the
+// title storage container when deploying this assembly to the device.
+[assembly: Guid("8641e188-0644-4919-b4d0-888f0e71ae5f")]
 
 // Version information for an assembly consists of the following four values:
 //

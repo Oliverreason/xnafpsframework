@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{5A2489FB-D9A3-4BB7-847F-872348CF29A1}</ProjectGuid>
+    <ProjectGuid>{FE234888-4763-458B-84A7-19B2F417A5A5}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FPSFramework</RootNamespace>
-    <AssemblyName>FPSFramework</AssemblyName>
+    <RootNamespace>BoxCollider</RootNamespace>
+    <AssemblyName>BoxCollider</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
-    <XnaCrossPlatformGroupID>3a23bf32-c477-4f4d-93cb-49225e96a7e0</XnaCrossPlatformGroupID>
+    <XnaCrossPlatformGroupID>56d2f661-876c-4fdc-854a-d217995174c7</XnaCrossPlatformGroupID>
     <XnaOutputType>Library</XnaOutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -90,45 +90,18 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Xclna.Xna.Animation.Content">
-      <HintPath>..\..\XNA Animation\Xclna.Xna.Animation.Content.dll</HintPath>
-    </Reference>
-    <Reference Include="Xclna.Xna.Animationx86">
-      <HintPath>..\..\XNA Animation\Xclna.Xna.Animationx86.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\AttackState.cs" />
-    <Compile Include="AI\DieState.cs" />
-    <Compile Include="AI\FollowState.cs" />
-    <Compile Include="AI\GameEntityMessage.cs" />
-    <Compile Include="AI\GameState.cs" />
-    <Compile Include="AI\IdleState.cs" />
-    <Compile Include="AI\StateMachine.cs" />
-    <Compile Include="Core\GameEntity.cs" />
-    <Compile Include="Core\GameLiveEntity.cs" />
-    <Compile Include="Core\GameObjectEntity.cs" />
-    <Compile Include="Core\IAttachable.cs" />
-    <Compile Include="Core\ICatchable.cs" />
-    <Compile Include="Core\IDrawable.cs" />
-    <Compile Include="Core\ISceneService.cs" />
-    <Compile Include="Core\Log.cs" />
-    <Compile Include="Core\SystemResources.cs" />
-    <Compile Include="Core\XmlLoaderHelper.cs" />
-    <Compile Include="Logic\AmmoPack.cs" />
-    <Compile Include="Logic\Bullet.cs" />
-    <Compile Include="Logic\Enemy.cs" />
-    <Compile Include="Logic\Gun.cs" />
-    <Compile Include="Logic\MedPack.cs" />
-    <Compile Include="Logic\Player.cs" />
-    <Compile Include="Logic\Scene.cs" />
+    <Compile Include="CollisionBox.cs" />
+    <Compile Include="CollisionCamera.cs" />
+    <Compile Include="CollisionCameraObserver.cs" />
+    <Compile Include="CollisionCameraPerson.cs" />
+    <Compile Include="CollisionFace.cs" />
+    <Compile Include="CollisionMesh.cs" />
+    <Compile Include="CollisionTree.cs" />
+    <Compile Include="CollisionTreeElem.cs" />
+    <Compile Include="CollisionTreeNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BoxCollider\BoxCollider.csproj">
-      <Project>{FE234888-4763-458B-84A7-19B2F417A5A5}</Project>
-      <Name>BoxCollider</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
