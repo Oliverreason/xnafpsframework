@@ -40,7 +40,7 @@ namespace FPSFramework.Core
         /// <summary>
         /// Model mesh reference
         /// </summary>
-        private ModelMesh modelMesh;
+        protected ModelMesh modelMesh;
 
         /// <summary>
         /// Matrix
@@ -91,6 +91,7 @@ namespace FPSFramework.Core
 
         protected GameEntity(ModelMesh modelMesh)
         {
+            Model m;
             if (modelMesh != null)
             {
                 this.position = modelMesh.BoundingSphere.Center;
@@ -193,7 +194,7 @@ namespace FPSFramework.Core
         {
             if ((SystemResources.Device != null) && (SystemResources.Device.IsDisposed == false))
             {
-                this.box.Draw(SystemResources.Device);
+                //this.box.Draw(SystemResources.Device);
             }
         }
 
@@ -209,7 +210,9 @@ namespace FPSFramework.Core
         /// Defines a CollisionBox for a model mesh
         /// </summary>
         /// <param name="mesh">Model mesh</param>
-        /// <returns></returns>        
+        /// <returns></returns>
+        /// 
+
         public virtual void DefineCollisionBox()
         {
             if (this.modelMesh == null)

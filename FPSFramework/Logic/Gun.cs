@@ -220,7 +220,7 @@ namespace FPSFramework.Logic
         {
             if (this.numberOfBullets > 0)
             {
-                this.numberOfBullets--;
+                //this.numberOfBullets--;
 
                 Bullet retBullet = new Bullet(this.bullet);
                 Vector3 scale = Vector3.Zero;
@@ -234,6 +234,8 @@ namespace FPSFramework.Logic
                             Matrix.CreateTranslation(translation);
                 retBullet.Position = translation;
 
+                
+                
                 return retBullet;
             }
 

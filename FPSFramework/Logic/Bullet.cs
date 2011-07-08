@@ -34,6 +34,14 @@ namespace FPSFramework.Logic
         /// </summary>
         private bool dead = false;
 
+        private int damage = 0;
+
+        Vector3 position;
+
+        Vector3 speed;
+
+        Model model;
+
 #region Properties
         public int LifeTime
         {
@@ -51,6 +59,30 @@ namespace FPSFramework.Logic
         {
             set { this.dead = value; }
             get { return this.dead; }
+        }
+
+        public Vector3 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+
+        public Vector3 Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
+
+        public int Damage
+        {
+            get { return damage; }
+            set { this.damage = value; }
+        }
+
+        public Model BulletModel
+        {
+            get { return model; }
+            set { this.model = value; }
         }
 #endregion
 
@@ -78,12 +110,40 @@ namespace FPSFramework.Logic
             {
                 this.lifeTime = b.LifeTime;
                 this.ModelMesh = b.ModelMesh;
+                this.model = b.model;
+                this.damage = b.damage;
             }
         }
 #endregion
 
-        public override void Draw(GameTime gameTime)
+        public void Draw(GameTime gameTime, CollisionCamera camera)
         {
+            GraphicsDevice gd = SystemResources.Device;
+
+            Matrix[] transforms = new Matrix[this.model.Bones.Count];
+            
+            this.model.CopyAbsoluteBoneTransformsTo(transforms);
+
+            Matrix transform = Matrix.CreateTranslation(this.position);
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                Matrix world = transform * transforms[mesh.ParentBone.Index];
+
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.EnableDefaultLighting();
+
+                    effect.View = camera.view;
+
+                    effect.Projection = camera.projection;
+
+                    effect.World = world;
+
+                }
+                mesh.Draw();
+            }
+
             base.Draw(gameTime);
         }
 
@@ -93,12 +153,6 @@ namespace FPSFramework.Logic
             this.dead = (this.elapsedTime >= this.lifeTime);
 
             this.Matrix = Matrix.CreateTranslation(this.Position);
-            /*
-            Vector3 pos = this.Position;
-
-            pos.X += 1.0f;
-            pos.Z += 1.0f;
-            */
             base.Update(gameTime, collision_mesh);
         }
 

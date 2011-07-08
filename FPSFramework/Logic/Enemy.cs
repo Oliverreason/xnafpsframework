@@ -42,7 +42,15 @@ namespace FPSFramework.Logic
 
         private bool on_ground = false;
 
+        private bool dead = false;
+
         private ModelAnimator modelAnimator = null;
+
+        private TimeSpan totalDieTime;
+
+        private TimeSpan dieTime;
+
+        private BoundingSphere bs;
 
         ///<summary>
         /// Animators controllers       
@@ -137,6 +145,25 @@ namespace FPSFramework.Logic
             get { return this.dieController; }
             set { this.dieController = value; }
         }
+
+        public Boolean Dead
+        {
+            get { return dead; }
+            set { this.dead = value; }
+        }
+
+        public TimeSpan TotalDieTime
+        {
+            get { return totalDieTime; }
+            set { this.totalDieTime = value; }
+        }
+
+        public BoundingSphere BoundingSphere
+        {
+            get { return bs; }
+            set { bs = value; }
+        }
+
 #endregion
 
 #region Ctor
@@ -144,11 +171,14 @@ namespace FPSFramework.Logic
             : base()
         {
             this.actualState = (IGameState)new IdleState();
+            dieTime = new TimeSpan(0, 0, 0);
         }
 
         public Enemy(int health, int lives)
             : base(health, lives)
         {
+            this.actualState = (IGameState)new IdleState();
+            dieTime = new TimeSpan(0, 0, 0);
         }
 #endregion
 
@@ -171,6 +201,19 @@ namespace FPSFramework.Logic
                 else
                 {
                     this.actualState.Update(gameTime, this);
+                    
+                    if (this.actualState is DieState)
+                    {   
+                        if (dieTime.Seconds == 0)
+                        {
+                            dieTime = gameTime.TotalGameTime;
+                        }
+
+                        if ((gameTime.TotalGameTime - dieTime) >= totalDieTime)
+                        {
+                            this.Dead = true;
+                        }
+                    }
                 }
             }
 
@@ -199,6 +242,16 @@ namespace FPSFramework.Logic
                 }
             }
 
+            if (this.Health <= 0)
+            {
+                IGameState gs = (IGameState)new DieState();
+                this.ChangeState(gs);
+                this.actualAnimationState = GameEntityAnimationState.Die;
+            }
+
+            this.ModelAnimator.World = this.Matrix;
+
+            //this.DefineCollisionBox();
             this.ModelAnimator.Update(gameTime);
         }
 
@@ -234,12 +287,19 @@ namespace FPSFramework.Logic
 
         public override void ReceiveMessage(GameEntityMessage message)
         {
+            //if an enemy is dead, it won't receive anymore messages
+            if (this.ActualAnimationState == GameEntityAnimationState.Die)
+            {
+                return;
+            }
+
             switch (message.type)
             {
             case GameEntityMessageType.Hit:
                 {
-                    if (message.sender is Player)
+                    if (message.sender is Player || message.sender is Bullet)
                     {
+                        
                         IGameState gs = (IGameState)new FollowState();
                         this.ChangeState(gs);
                     }
@@ -248,7 +308,11 @@ namespace FPSFramework.Logic
 
             case GameEntityMessageType.Damage:
                 {
-
+                    if (message.sender is Bullet)
+                    {
+                        Bullet b = (Bullet)message.sender;
+                        this.Health = this.Health - b.Damage;
+                    }
                     break;
                 }
             }

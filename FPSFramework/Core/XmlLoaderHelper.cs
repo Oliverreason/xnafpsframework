@@ -217,6 +217,8 @@ namespace FPSFramework.Core
 
                         g.Sprite = SystemResources.Content.Load<Texture2D>(@spriteName);
                         g.Bullet = new Bullet(bulletLifeTime, bulletModel.Meshes[0]);
+                        g.Bullet.Damage = Convert.ToInt32(xmle.GetAttribute("bulletDamage"));
+                        g.Bullet.BulletModel = bulletModel;
                     }
                     catch (InvalidCastException e)
                     {
@@ -264,6 +266,9 @@ namespace FPSFramework.Core
                         e.ScaleFactor = Convert.ToSingle(xmle.GetAttribute("scaleFactor"));
                         e.RunSpeed = Convert.ToSingle(xmle.GetAttribute("runSpeed"));
                         e.WalkSpeed = Convert.ToSingle(xmle.GetAttribute("walkSpeed"));
+                        e.Health = Convert.ToInt32(xmle.GetAttribute("health"));
+                        int seconds = Convert.ToInt32(xmle.GetAttribute("dieTime"));
+                        e.TotalDieTime = new TimeSpan(0, 0, seconds);
 
                         game.Components.Remove(e.ModelAnimator); //We manage update and call
 
@@ -281,7 +286,7 @@ namespace FPSFramework.Core
                     }
                     catch (InvalidCastException ice)
                     {
-                        Log.Write("BuildObjectsList: InvalidCastExpcetion raised (did you forget some ammopack setting?)");
+                        Log.Write("BuildObjectsList: InvalidCastExpcetion raised (did you forget some enemy setting?)");
                         Log.Write(ice.Message);
                     }
 

@@ -211,11 +211,37 @@ namespace FPSFramework.Logic
                 if (this.player.ActualGun != null)
                 {
                     Bullet b = this.player.ActualGun.Shot();
-                    this.bullets.Add(b);
+
+                    if (b != null)
+                    {
+                        Vector3 position = this.camera.GetWorldVector(3);
+                        Vector3 speed = -this.camera.GetWorldVector(2) * 1000.0f;
+
+                        b.Position = position;
+                        b.Speed = speed;
+
+                        this.bullets.Add(b);
+                    }
                 }
             }
 
             this.CheckCollisions(gameTime);
+
+            //Manages dead enemies
+            EnemiesList deadEnemies = new EnemiesList();
+
+            foreach (KeyValuePair<String, Enemy> kvp in this.enemies)
+            {
+                if (kvp.Value.Dead)
+                {
+                    deadEnemies.Add(kvp.Key, kvp.Value);
+                }
+            }
+
+            foreach (string key in deadEnemies.Keys)
+            {
+                this.enemies.Remove(key);
+            }
             
             foreach (Enemy e in this.enemies.Values)
             {
@@ -297,18 +323,7 @@ namespace FPSFramework.Logic
 
             foreach (Bullet b in this.bullets)
             {
-                worldMatrix = b.Matrix;
-
-                foreach (BasicEffect effect in b.ModelMesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-
-                    effect.World = worldMatrix * Matrix.CreateScale(20.0f); 
-                    effect.View = this.camera.view;
-                    effect.Projection = this.camera.projection;                    
-                }
-
-                b.ModelMesh.Draw();
+                b.Draw(gameTime, this.camera);
             }
             
             if (this.player.ActualGun != null)
@@ -361,18 +376,51 @@ namespace FPSFramework.Logic
             ///Enemies with player            
             foreach (Enemy e in this.enemies.Values)
             {
-                if (cameraBox.BoxIntersect(e.Box))
+                if (e.ActualAnimationState != GameEntityAnimationState.Die)
                 {
-                    this.SendMessage(player, e, GameEntityMessageType.Hit, gameTime);
+                    if (cameraBox.BoxIntersect(e.Box))
+                    {
+                        this.SendMessage(player, e, GameEntityMessageType.Hit, gameTime);
+                    }
                 }
-
                 e.Update(gameTime, this.collisionMesh);
             }             
 
             ///Bullets with enemies, static objects...
+                                   
             foreach (Bullet b in this.bullets)
             {
-                //b.Update(gameTime, ref this.collisionMesh, ref this.enemies);
+                Vector3 position = b.Position;
+                Vector3 speed = b.Speed;
+
+                Vector3 new_pos = position + speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                this.collisionMesh.PointMove(position, new_pos, 1.0f, 1.0f, 3, out position);
+
+                //these are discartable, just to pass to the PointIntersect method as out parameters
+                float intersect_distance;
+                Vector3 intersect_position = new Vector3();
+                Vector3 intersection_normal = new Vector3();
+
+                //collision of bullets with static scenario (walls, etc.)
+                if (this.collisionMesh.PointIntersect(position, new_pos, out intersect_distance, out intersect_position, out intersection_normal))
+                {
+                    b.Dead = true;
+                }
+                
+                //collision of bullets with enemies
+                foreach (Enemy e in this.enemies.Values) 
+                {                    
+                    if (e.Box.PointInside(b.Position)) 
+                    {
+                        b.Dead = true;
+                        SendMessage(b, e, GameEntityMessageType.Damage, gameTime);
+                        if (e.Health >= 10)
+                            SendMessage(b, e, GameEntityMessageType.Hit, gameTime);
+                    }
+                }
+
+                b.Position = position;
+                b.Speed = speed;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectGuid>{953337C2-D673-461F-A759-0ED75B9474CC}</ProjectGuid>
     <ProjectTypeGuids>{9F340DF3-2AED-4330-AC16-78AC2D9B4738};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -12,6 +13,10 @@
     <XnaPlatform>Windows</XnaPlatform>
     <XNAGlobalContentPipelineAssemblies>Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</XNAGlobalContentPipelineAssemblies>
     <XNAProjectContentPipelineAssemblies>$(ProjectDir)..\XNA Animation\Xclna.Xna.Animation.Content.dll</XNAProjectContentPipelineAssemblies>
+    <FileUpgradeFlags>0</FileUpgradeFlags>
+    <UpgradeBackupLocation>E:\REI_ABSOLUTISTA\Visual Studio 2010\Projects\XNAFPSFramework\Backup1\FPSFramework\</UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -99,10 +104,6 @@
     <Compile Include="Core\Log.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Log</Name>
-    </Compile>
-    <Compile Include="Helper\TestHelper.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>TestHelper</Name>
     </Compile>
     <Compile Include="Logic\AmmoPack.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
