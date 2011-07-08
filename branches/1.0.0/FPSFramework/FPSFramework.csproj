@@ -1,0 +1,184 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{953337C2-D673-461F-A759-0ED75B9474CC}</ProjectGuid>
+    <ProjectTypeGuids>{9F340DF3-2AED-4330-AC16-78AC2D9B4738};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FPSFramework</RootNamespace>
+    <AssemblyName>FPSFramework</AssemblyName>
+    <XnaFrameworkVersion>v1.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows</XnaPlatform>
+    <XNAGlobalContentPipelineAssemblies>Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</XNAGlobalContentPipelineAssemblies>
+    <XNAProjectContentPipelineAssemblies>$(ProjectDir)..\XNA Animation\Xclna.Xna.Animation.Content.dll</XNAProjectContentPipelineAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>doc\FPSFramework.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>bin\x86\Release\FPSFramework.XML</DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+    <Reference Include="Xclna.Xna.Animationx86, Version=1.0.2.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\XNA Animation\Xclna.Xna.Animationx86.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AI\AttackState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>AttackState</Name>
+    </Compile>
+    <Compile Include="AI\DieState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>DieState</Name>
+    </Compile>
+    <Compile Include="AI\FollowState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>FollowState</Name>
+    </Compile>
+    <Compile Include="AI\GameEntityMessage.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameEntityMessage</Name>
+    </Compile>
+    <Compile Include="AI\GameState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameState</Name>
+    </Compile>
+    <Compile Include="AI\IdleState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>IdleState</Name>
+    </Compile>
+    <Compile Include="AI\StateMachine.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>StateMachine</Name>
+    </Compile>
+    <Compile Include="Core\ISceneService.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ISceneService</Name>
+    </Compile>
+    <Compile Include="Core\SystemResources.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SystemResources</Name>
+    </Compile>
+    <Compile Include="Core\Log.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Log</Name>
+    </Compile>
+    <Compile Include="Helper\TestHelper.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TestHelper</Name>
+    </Compile>
+    <Compile Include="Logic\AmmoPack.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>AmmoPack</Name>
+    </Compile>
+    <Compile Include="Logic\Bullet.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Bullet</Name>
+    </Compile>
+    <Compile Include="Logic\Enemy.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Enemy</Name>
+    </Compile>
+    <Compile Include="Core\GameEntity.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameEntity</Name>
+    </Compile>
+    <Compile Include="Core\GameLiveEntity.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameLiveEntity</Name>
+    </Compile>
+    <Compile Include="Core\GameObjectEntity.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameObjectEntity</Name>
+    </Compile>
+    <Compile Include="Logic\Gun.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Gun</Name>
+    </Compile>
+    <Compile Include="Core\IAttachable.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>IAttachable</Name>
+    </Compile>
+    <Compile Include="Core\ICatchable.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ICatchable</Name>
+    </Compile>
+    <Compile Include="Core\IDrawable.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>IDrawable</Name>
+    </Compile>
+    <Compile Include="Logic\MedPack.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MedPack</Name>
+    </Compile>
+    <Compile Include="Logic\Player.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Player</Name>
+    </Compile>
+    <Compile Include="Logic\Scene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Scene</Name>
+    </Compile>
+    <Compile Include="Core\XmlLoaderHelper.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>XmlLoaderHelper</Name>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>AssemblyInfo</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoxCollider\BoxColliderWin.csproj">
+      <Project>{715B0CEB-FB23-4A00-908B-6BF790EA82A5}</Project>
+      <Name>BoxColliderWin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.ContentPipeline.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.Common.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
