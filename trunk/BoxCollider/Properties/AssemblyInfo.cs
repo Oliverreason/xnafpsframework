@@ -7,19 +7,22 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("BoxCollider")]
 [assembly: AssemblyProduct("BoxCollider")]
-[assembly: AssemblyDescription("XNA Game Library for 3D Collision Detecion and Response")]
-[assembly: AssemblyCompany("http://fabio.policarpo.nom.br")]
-[assembly: AssemblyCopyright("Copyright ©  2007 Fabio Policarpo")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyCompany("Duli Mar Ltda")]
+[assembly: AssemblyCopyright("Copyright © Duli Mar Ltda 2006")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
+// COM, set the ComVisible attribute to true on that type. Only Windows
+// assemblies support COM.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1f12648d-31a0-4bba-b5c6-831a0942b1b8")]
+// On Windows, the following GUID is for the ID of the typelib if this
+// project is exposed to COM. On other platforms, it unique identifies the
+// title storage container when deploying this assembly to the device.
+[assembly: Guid("97f6784f-c2b2-4cc3-82ba-ec87f05ea824")]
 
 // Version information for an assembly consists of the following four values:
 //
