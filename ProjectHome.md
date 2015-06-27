@@ -1,0 +1,5 @@
+The electronic games universe improved so quickly in these decades, and the games suffered a lot of changes. Just like movies, genres were defined for games, such as 'sport', 'racing', 'fighting', 'first-person', etc.  There are many amateur movie makers out there, and also many people interested in making their own games.
+
+With this in mind, Microsoft conceived XNA, a game development framework to attend this group of people. Many game programming aspects were simplified. Even so, XNA must be sufficiently generic to support any type of game genre, demanding specific knowledge of the developer.
+
+In this work, we will attain ourselves to FPS (first-person shooter) genre. Building this kind of  game without a specific engine or framework can raise the project's development time and complexity level considerably. The XNA-based framework presented here will aid developers interested in that task, abstracting some common aspects that raise when trying to make FPS games from the scratch, such as camera control, scene management and collision detection.
